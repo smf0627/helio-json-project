@@ -25,7 +25,6 @@ const JSONS: Json[] = [
 
 
 
-
 export class JsonListComponent implements OnInit {
 
   //constructor() { }

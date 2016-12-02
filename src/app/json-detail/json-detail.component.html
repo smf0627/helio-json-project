@@ -1,0 +1,13 @@
+<p>
+  json-detail works!
+</p>
+
+
+<div *ngIf="json">
+  <h2>{{json.name}} details!</h2>
+  <div><label>id: </label>{{json.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="json.name" placeholder="name"/>
+  </div>
+</div>

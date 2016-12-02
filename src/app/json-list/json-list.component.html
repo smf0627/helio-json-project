@@ -2,8 +2,15 @@
   json-list works!
 </p>
 
-<li *ngFor="let json of jsons">
-  <span (click)="onJsonSelect(json)">
-    <b>{{ json.id }} - {{ json.name }}</b>
-  </span>
-</li>
+<h1>{{title}}</h1>
+<h2>My Json List</h2>
+
+<ul class="json-list">
+  <li *ngFor="let json of jsons"
+      [class.selected]="json === selectedJson"
+      (click)="onJsonSelect(json)" >
+    <span class="badge"> {{ json.id }}</span>
+    <b>{{ json.name }}</b>
+  </li>
+</ul>
+<app-json-detail [json]="selectedJson"></app-json-detail>
