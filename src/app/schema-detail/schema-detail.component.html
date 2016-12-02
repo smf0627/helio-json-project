@@ -1,0 +1,13 @@
+<p>
+  schema-detail works!
+</p>
+
+
+<div *ngIf="schema">
+  <h2>{{schema.name}} details!</h2>
+  <div><label>id: </label>{{schema.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="schema.name" placeholder="name"/>
+  </div>
+</div>

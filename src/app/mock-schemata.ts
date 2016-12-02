@@ -1,7 +1,7 @@
-import { Json } from './json';
+import { Schema } from './schema';
 
 
-export const JSONS: Json[] = [
+export const SCHEMATA: Schema[] = [
   { id: 11, name: 'Mr. Nice' },
   { id: 12, name: 'Narco' },
   { id: 13, name: 'Bombasto' },

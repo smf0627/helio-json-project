@@ -24,7 +24,7 @@ module.exports = function (config) {
       }
     },
     angularCli: {
-      config: './angular-cli.json',
+      config: './angular-cli.schema',
       environment: 'dev'
     },
     reporters: config.angularCli && config.angularCli.codeCoverage

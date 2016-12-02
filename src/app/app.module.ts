@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { JsonListComponent } from './json-list/json-list.component';
-import { JsonDetailComponent } from './json-detail/json-detail.component';
+import { SchemaListComponent } from './schema-list/schema-list.component';
+import { SchemaDetailComponent } from './schema-detail/schema-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JsonListComponent,
-    JsonDetailComponent
+    SchemaListComponent,
+    SchemaDetailComponent
   ],
   imports: [
     BrowserModule,

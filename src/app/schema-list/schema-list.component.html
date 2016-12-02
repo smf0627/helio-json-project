@@ -1,0 +1,25 @@
+<p>
+  schema-list works!
+</p>
+
+<h1>{{title}}</h1>
+<h2>My Json List</h2>
+
+<ul class="schema-list">
+  <li *ngFor="let schema of schemata"
+      [class.selected]="schema === selectedSchema"
+      (click)="onSelectSchema(schema)" >
+    <span class="badge"> {{ schema.id }}</span>
+    <b>{{ schema.name }}</b>
+  </li>
+</ul>
+
+
+<div>
+  <label>Json Object Name:</label> <input #schemaName />
+  <button (click)="onAddSchema(schemaName.value); schemaName.value=''">
+    Add
+  </button>
+</div>
+
+<app-schema-detail [schema]="selectedSchema"></app-schema-detail>

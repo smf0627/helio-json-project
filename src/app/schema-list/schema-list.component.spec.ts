@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { JsonDetailComponent } from './json-detail.component';
+import { SchemaListComponent } from './schema-list.component';
 
-describe('JsonDetailComponent', () => {
-  let component: JsonDetailComponent;
-  let fixture: ComponentFixture<JsonDetailComponent>;
+describe('SchemaListComponent', () => {
+  let component: SchemaListComponent;
+  let fixture: ComponentFixture<SchemaListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JsonDetailComponent ]
+      declarations: [ SchemaListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JsonDetailComponent);
+    fixture = TestBed.createComponent(SchemaListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
