@@ -8,9 +8,19 @@
 <ul class="json-list">
   <li *ngFor="let json of jsons"
       [class.selected]="json === selectedJson"
-      (click)="onJsonSelect(json)" >
+      (click)="onSelectJson(json)" >
     <span class="badge"> {{ json.id }}</span>
     <b>{{ json.name }}</b>
   </li>
 </ul>
+
+<!--<button (click)="onAddJsonClick()">Add Json Object</button>-->
+
+<div>
+  <label>Json Object Name:</label> <input #jsonName />
+  <button (click)="onAddJson(jsonName.value); jsonName.value=''">
+    Add
+  </button>
+</div>
+
 <app-json-detail [json]="selectedJson"></app-json-detail>
