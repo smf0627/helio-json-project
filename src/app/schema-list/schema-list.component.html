@@ -6,10 +6,10 @@
 <h2>My Json List</h2>
 
 <ul class="schema-list">
-  <li *ngFor="let schema of schemata"
+  <li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
       [class.selected]="schema === selectedSchema"
       (click)="onSelectSchema(schema)" >
-    <span class="badge"> {{ schema.id }}</span>
+    <span class="badge"> {{ i }}</span>
     <b>{{ schema.name }}</b>
   </li>
 </ul>

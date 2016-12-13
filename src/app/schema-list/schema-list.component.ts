@@ -53,7 +53,7 @@ export class SchemaListComponent implements OnInit {
   }*/
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedSchema.id]);
+    this.router.navigate(['/detail', this.selectedSchema.name]);
   }
 
   onAddSchema(name: string): void {

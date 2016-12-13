@@ -28,9 +28,9 @@ export class SchemaDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => this.schemaService.getSchema(+params['id']))
-      .subscribe(schema => this.schema = schema);
+    //this.route.params
+     // .switchMap((params: Params) => this.schemaService.getSchema(+params['id']))
+      //.subscribe(schema => this.schema = schema);
   }
 
   goBack(): void {
