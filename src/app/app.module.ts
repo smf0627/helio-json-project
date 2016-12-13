@@ -6,19 +6,42 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SchemaListComponent } from './schema-list/schema-list.component';
 import { SchemaDetailComponent } from './schema-detail/schema-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SchemaService } from "./schema.service";
+
+import { AppRoutingModule } from './app-routing.module';
+// import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SchemaListComponent,
-    SchemaDetailComponent
+    SchemaDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
+    /*RouterModule.forRoot([
+      {
+        path: 'detail/:id',
+        component: SchemaDetailComponent
+          // 3 // path: '',
+          // 3 // redirectTo: '/dashboard',
+          // 3 // pathMatch: 'full'
+          // 2 // path: 'dashboard',
+          // 2 // component: DashboardComponent
+          // 1 // path: 'schema',
+          // 1 // component: SchemaListComponent
+      }
+    ])*/
   ],
-  providers: [],
+  providers: [SchemaService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

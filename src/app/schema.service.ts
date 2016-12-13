@@ -10,6 +10,11 @@ export class SchemaService {
     return Promise.resolve(SCHEMATA);
   }
 
+  getSchema(id: number): Promise<Schema> {
+    return this.getSchemata()
+      .then(schemata => schemata.find(schema => schema.id === id));
+  }
+
   /*
   create(name: string): Promise<Schema> {
     return this.http

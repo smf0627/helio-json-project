@@ -22,4 +22,7 @@
   </button>
 </div>
 
-<app-schema-detail [schema]="selectedSchema"></app-schema-detail>
+<div *ngIf="selectedSchema">
+  <app-schema-detail [schema]="selectedSchema"></app-schema-detail>
+</div>
+

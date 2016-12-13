@@ -1,0 +1,10 @@
+<h3>My Dashboard</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let schema of schemata"  [routerLink]="['/detail', schema.id]"  class="col-1-4">
+  <!-- <div *ngFor="let schema of schemata" class="col-1-4"> -->
+    <div class="module schema">
+      <h4>{{schema.name}}</h4>
+    </div>
+  </a>
+  <!-- </div> -->
+</div>
