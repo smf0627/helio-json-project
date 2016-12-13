@@ -23,6 +23,10 @@
 </div>
 
 <div *ngIf="selectedSchema">
+  <h2>
+    {{selectedSchema.name | uppercase}} is my Schema
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
   <app-schema-detail [schema]="selectedSchema"></app-schema-detail>
 </div>
 

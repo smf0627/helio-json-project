@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Schema } from '../schema';
 import { SchemaService } from '../schema.service';
@@ -21,7 +22,9 @@ export class SchemaListComponent implements OnInit {
   // schemata = SCHEMATA;
   selectedSchema: Schema;
 
-  constructor(private schemaService: SchemaService) { }
+  constructor(
+    private router: Router,
+    private schemaService: SchemaService) { }
 
   getSchemata(): void {
     this.schemaService.getSchemata().then(schemata => this.schemata = schemata);
@@ -48,6 +51,10 @@ export class SchemaListComponent implements OnInit {
         this.selectedSchema = null;
       });
   }*/
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedSchema.id]);
+  }
 
   onAddSchema(name: string): void {
    name = name.trim();
