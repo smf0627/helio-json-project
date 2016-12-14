@@ -17,7 +17,7 @@ import { SchemaService } from '../schema.service';
 
 export class SchemaListComponent implements OnInit {
 
-  title = 'Tour of JSON';
+  title = 'JSON Schemata List';
   schemata: Schema[];
   // schemata = SCHEMATA;
   selectedSchema: Schema;

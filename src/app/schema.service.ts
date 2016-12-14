@@ -10,6 +10,7 @@ import { Schema } from './schema';
 export class SchemaService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
+  // private  schemataUrl = 'http://localhost:4000'
   private schemataUrl = 'http://hjbedwj2geremgay2.stoplight-proxy.io/organizations/blah/schemas' //'api/schemata';  // URL to web api
 
   constructor(private http: Http) { }

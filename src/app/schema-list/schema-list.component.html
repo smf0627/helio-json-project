@@ -1,38 +1,59 @@
-<p>
-  schema-list works!
-</p>
 
 <h1>{{title}}</h1>
-<h2>My Json List</h2>
-
-<ul class="schema-list">
-  <li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
-      [class.selected]="schema === selectedSchema">
-    <!--li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
-      [class.selected]="schema === selectedSchema"
-      (click)="onSelectSchema(schema)" > -->
-    <span class="badge"> {{ i }}</span>
-    <a [routerLink]="['/detail', schema.name]">{{ schema.name }}</a>
-    <button class="delete"
-      (click)="onDeleteSchema(schema); $event.stopPropagation()">x</button>
-  </li>
-</ul>
 
 
-<div>
-  <label>Json Object Name:</label>
-  <input #schemaName />
-  <button (click)="onAddSchema(schemaName.value); schemaName.value=''">
-    Add
-  </button>
+<div class="row">
+  <div class="col-md-6">
+
+    <h3> + Available Schema </h3>
+    <ul class="schema-list">
+      <li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
+          [class.selected]="schema === selectedSchema">
+        <!--li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
+          [class.selected]="schema === selectedSchema"
+          (click)="onSelectSchema(schema)" > -->
+        <span class="badge"> {{ i }}</span>
+        <a [routerLink]="['/detail', schema.name]">{{ schema.name }}</a>
+        <button class="delete"
+                (click)="onDeleteSchema(schema); $event.stopPropagation()">x</button>
+      </li>
+
+      <!--li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
+          [class.selected]="schema === selectedSchema"
+          (click)="onSelectSchema(schema)" >
+        <span class="badge">{{ i }}</span> {{schema.name}}
+      </li-->
+
+    </ul>
+
+    <div *ngIf="selectedSchema">
+      <h2>
+        {{selectedSchema.name | uppercase}} is my Schema
+      </h2>
+      <button (click)="goToDetail()">View Details</button>
+      <app-schema-detail [schema]="selectedSchema"></app-schema-detail>
+    </div>
+
+  </div>
+
+  <div class="col-md-6">
+    <h3> + Add Entries </h3>
+    <div>
+      <label>Schema Name:</label>
+      <input #schemaName />
+      <button (click)="onAddSchema(schemaName.value); schemaName.value=''">
+        Add
+      </button>
+    </div>
+  </div>
 </div>
 
 
-<div *ngIf="selectedSchema">
-  <h2>
-    {{selectedSchema.name | uppercase}} is my Schema
-  </h2>
-  <button (click)="goToDetail()">View Details</button>
-  <app-schema-detail [schema]="selectedSchema"></app-schema-detail>
-</div>
+
+
+
+
+
+
+
 
