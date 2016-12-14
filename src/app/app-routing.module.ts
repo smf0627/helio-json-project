@@ -8,7 +8,7 @@ import { SchemaDetailComponent } from './schema-detail/schema-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'detail/:id', component: SchemaDetailComponent },
+  { path: 'detail/:name', component: SchemaDetailComponent },
   { path: 'schema', component: SchemaListComponent }
 ];
 

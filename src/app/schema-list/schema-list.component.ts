@@ -38,29 +38,56 @@ export class SchemaListComponent implements OnInit {
     this.selectedSchema = schema;
   }
 
-  /*onAddJsonClick() {
-    this.selectedSchema = new Schema('', '');
-  }*/
-
-  /*onAddJson(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.schemaService.create(name)
-      .then(schema => {
-        this.schemata.push(schema);
-        this.selectedSchema = null;
-      });
-  }*/
-
-  gotoDetail(): void {
+  goToDetail(): void {
     this.router.navigate(['/detail', this.selectedSchema.name]);
   }
 
   onAddSchema(name: string): void {
-   name = name.trim();
-   if (!name) { return; }
-   console.log(name);
-   //SCHEMATA.push(Schema.name); // Not right
+    name = name.trim();
+    console.log(name);
+    if (!name) { return; }
+    this.schemaService.createSchema(name)
+      .then(schema => {
+        this.schemata.push(schema);
+        this.selectedSchema = null;
+      });
+  }
+
+  onDeleteSchema(schema: Schema): void {
+    this.schemaService
+      .deleteSchema(schema.name)
+      .then(() => {
+        this.schemata = this.schemata.filter(h => h !== schema);
+        if (this.selectedSchema === schema) { this.selectedSchema = null; }
+      });
+  }
+
+
+  /*
+    onAddSchema(name: string): void {
+     name = name.trim();
+     if (!name) { return; }
+     console.log(name);
+     //SCHEMATA.push(Schema.name); // Not right
+     }
+   */
+
+  /*
+     onAddJsonClick() {
+      this.selectedSchema = new Schema('', '');
    }
+   */
+
+  /*
+    onAddJson(name: string): void {
+     name = name.trim();
+     if (!name) { return; }
+     this.schemaService.create(name)
+     .then(schema => {
+       this.schemata.push(schema);
+       this.selectedSchema = null;
+     });
+     }
+   */
 
 }

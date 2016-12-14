@@ -6,11 +6,24 @@
 <div *ngIf="schema">
   <h2>{{schema.name}} details!</h2>
   <div>
-    <label>id: </label>{{schema.id}}
+    <label>Name: </label>{{schema.name}}
   </div>
   <div>
     <label>name: </label>
     <input [(ngModel)]="schema.name" placeholder="name"/>
   </div>
+  <div>
+    <label>schema: </label>
+    <input [(ngModel)]="schema.schema" placeholder="schema"/>
+  </div>
+  <div>
+    <label>URI: </label>
+    <input [(ngModel)]="schema.uri" placeholder="uri"/>
+  </div>
+  <div>
+    <label>Is Active?: </label>
+    <input [(ngModel)]="schema.isActive" placeholder="isActive"/>
+  </div>
+  <button (click)="onSaveSchema()">Save It!</button>
   <button (click)="goBack()">Back</button>
 </div>

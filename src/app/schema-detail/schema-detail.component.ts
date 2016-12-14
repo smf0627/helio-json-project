@@ -1,11 +1,11 @@
 import 'rxjs/add/operator/switchMap';
 import {Component, OnInit, Input} from '@angular/core';
-  //import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
+//import { Component, Input } from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Location} from '@angular/common';
 
-import { SchemaService } from '../schema.service';
-import { Schema } from '../schema';
+import {SchemaService} from '../schema.service';
+import {Schema} from '../schema';
 
 
 @Component({
@@ -14,23 +14,24 @@ import { Schema } from '../schema';
   templateUrl: 'schema-detail.component.html',
   styleUrls: ['schema-detail.component.css']
 })
-
-
 export class SchemaDetailComponent implements OnInit {
-/// export class SchemaDetailComponent implements OnInit {
   @Input()
-  schema: Schema;
+  schema: any;
 
-  constructor(
-    private schemaService: SchemaService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) { }
+  constructor(private schemaService: SchemaService,
+              private route: ActivatedRoute,
+              private location: Location) {
+  }
 
   ngOnInit(): void {
-    //this.route.params
-     // .switchMap((params: Params) => this.schemaService.getSchema(+params['id']))
-      //.subscribe(schema => this.schema = schema);
+    this.route.params
+      .switchMap((params: Params) => this.schemaService.getSchema(params['name']))
+      .subscribe(schema => this.schema = schema);
+  }
+
+  onSaveSchema(): void {
+    this.schemaService.updateSchema(this.schema)
+      .then(() => this.goBack());
   }
 
   goBack(): void {

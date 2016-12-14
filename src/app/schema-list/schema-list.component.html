@@ -7,26 +7,32 @@
 
 <ul class="schema-list">
   <li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
+      [class.selected]="schema === selectedSchema">
+    <!--li *ngFor="let schema of schemata; let i = index" [attr.data-index]="i"
       [class.selected]="schema === selectedSchema"
-      (click)="onSelectSchema(schema)" >
+      (click)="onSelectSchema(schema)" > -->
     <span class="badge"> {{ i }}</span>
-    <b>{{ schema.name }}</b>
+    <a [routerLink]="['/detail', schema.name]"><b>{{ schema.name }}</b></a>
+    <button class="delete"
+      (click)="onDeleteSchema(schema); $event.stopPropagation()">x</button>
   </li>
 </ul>
 
 
 <div>
-  <label>Json Object Name:</label> <input #schemaName />
+  <label>Json Object Name:</label>
+  <input #schemaName />
   <button (click)="onAddSchema(schemaName.value); schemaName.value=''">
     Add
   </button>
 </div>
 
+
 <div *ngIf="selectedSchema">
   <h2>
     {{selectedSchema.name | uppercase}} is my Schema
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button (click)="goToDetail()">View Details</button>
   <app-schema-detail [schema]="selectedSchema"></app-schema-detail>
 </div>
 
