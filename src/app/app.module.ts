@@ -10,6 +10,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchemaService } from "./schema.service";
 
 import { AppRoutingModule } from './app-routing.module';
+import { SchemaSearchComponent } from './schema-search/schema-search.component';
+import './rxjs-extensions';
+
+
 // import { RouterModule } from '@angular/router';
 
 // Imports for loading & configuring the in-memory web api
@@ -22,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     SchemaListComponent,
     SchemaDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    SchemaSearchComponent
   ],
   imports: [
     BrowserModule,

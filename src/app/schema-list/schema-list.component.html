@@ -12,7 +12,7 @@
       [class.selected]="schema === selectedSchema"
       (click)="onSelectSchema(schema)" > -->
     <span class="badge"> {{ i }}</span>
-    <a [routerLink]="['/detail', schema.name]"><b>{{ schema.name }}</b></a>
+    <a [routerLink]="['/detail', schema.name]">{{ schema.name }}</a>
     <button class="delete"
       (click)="onDeleteSchema(schema); $event.stopPropagation()">x</button>
   </li>

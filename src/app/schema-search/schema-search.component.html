@@ -1,0 +1,15 @@
+<p>
+  schema-search works!
+</p>
+
+
+<div id="search-component">
+  <h4>Schema Search</h4>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <div *ngFor="let schema of schemata | async"
+         (click)="goToDetail(schema)" class="search-result" >
+      {{schema.name}}
+    </div>
+  </div>
+</div>
