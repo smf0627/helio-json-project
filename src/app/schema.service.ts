@@ -10,7 +10,7 @@ import { Schema } from './schema';
 export class SchemaService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private  schemataUrl = 'http://localhost:4000/v1/schemata';
+  private schemataUrl = 'http://localhost:4000/v1/schemata';
   //private schemataUrl = 'http://hjbedwj2geremgay2.stoplight-proxy.io/organizations/blah/schemas' //'api/schemata';  // URL to web api
 
   constructor(private http: Http) { }
@@ -31,7 +31,7 @@ export class SchemaService {
   }
 
   createSchema(schema): Promise<any> {
-    console.log(schema);
+    // console.log(schema);
     return this.http
       .post(this.schemataUrl, schema)
       .toPromise()
