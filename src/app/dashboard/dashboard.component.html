@@ -4,12 +4,12 @@
 
   <div class="col-md-6">
     <h3> + My Dashboard </h3>
-    <h4 class="bg-primary">Your Schema Count: {{schemata.length}}</h4>
+    <h4 class="bg-primary" *ngIf="schemata">Your Schema Count: {{schemata.length}}</h4>
 
-    <a *ngFor="let schema of schemata"  [routerLink]="['/detail', schema.name]"  class="col-1-4">
+    <a *ngFor="let schema of schemata"  [routerLink]="['/detail', schema._id]"  class="col-1-4">
       <!-- <div *ngFor="let schema of schemata" class="col-1-4"> -->
       <div class="module schema">
-        <h4>{{schema.name}}</h4>
+        <b>{{schema.name}}</b>
       </div>
     </a>
   </div>
@@ -20,8 +20,6 @@
   </div>
 
 </div>
-
-
 
 
 

@@ -26,7 +26,10 @@ export class SchemaDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.schemaService.getSchema(params['name']))
-      .subscribe(schema => this.schema = schema);
+      .subscribe(schema => {
+        this.schema = schema;
+        this.schema.rawSchema = JSON.stringify(schema.schema)
+      });
   }
 
   onSaveSchema(): void {

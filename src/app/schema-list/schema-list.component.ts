@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { Schema } from '../schema';
-import { SchemaService } from '../schema.service';
-
+import {Schema} from '../schema';
+import {SchemaService} from '../schema.service';
 
 
 @Component({
@@ -14,17 +13,18 @@ import { SchemaService } from '../schema.service';
 })
 
 
-
 export class SchemaListComponent implements OnInit {
 
   title = 'JSON Schemata List';
-  schemata: Schema[];
+  schemata: any;
   // schemata = SCHEMATA;
   selectedSchema: Schema;
+  newSchema: any;
 
-  constructor(
-    private router: Router,
-    private schemaService: SchemaService) { }
+  constructor(private router: Router,
+              private schemaService: SchemaService) {
+   // this.newSchema = {};
+  }
 
   getSchemata(): void {
     this.schemaService.getSchemata().then(schemata => this.schemata = schemata);
@@ -32,6 +32,7 @@ export class SchemaListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSchemata();
+    this.newSchema = {};
   }
 
   onSelectSchema(schema: Schema): void {
@@ -39,55 +40,63 @@ export class SchemaListComponent implements OnInit {
   }
 
   goToDetail(): void {
-    this.router.navigate(['/detail', this.selectedSchema.name]);
+    this.router.navigate(['/detail', this.selectedSchema._id]);
+    // this.router.navigate(['/detail', this.selectedSchema.name]);
   }
 
-  onAddSchema(name: string): void {
-    name = name.trim();
-    console.log(name);
-    if (!name) { return; }
-    this.schemaService.createSchema(name)
-      .then(schema => {
-        this.schemata.push(schema);
-        this.selectedSchema = null;
+  onAddSchema(schema): void {
+    console.log(schema);
+    // onAddSchema(name: string): void {
+      // name = name.trim();
+      // console.log(name);
+      // if (!name) {
+      //   return;
+      // }
+
+    this.schemaService.createSchema(schema)
+      .then(() => {
+        this.newSchema = {};
+        return this.getSchemata();
       });
   }
 
   onDeleteSchema(schema: Schema): void {
     this.schemaService
-      .deleteSchema(schema.name)
+      .deleteSchema(schema._id)
       .then(() => {
         this.schemata = this.schemata.filter(h => h !== schema);
-        if (this.selectedSchema === schema) { this.selectedSchema = null; }
+        if (this.selectedSchema === schema) {
+          this.selectedSchema = null;
+        }
       });
   }
 
 
   /*
-    onAddSchema(name: string): void {
-     name = name.trim();
-     if (!name) { return; }
-     console.log(name);
-     //SCHEMATA.push(Schema.name); // Not right
-     }
-   */
-
-  /*
-     onAddJsonClick() {
-      this.selectedSchema = new Schema('', '');
+   onAddSchema(name: string): void {
+   name = name.trim();
+   if (!name) { return; }
+   console.log(name);
+   //SCHEMATA.push(Schema.name); // Not right
    }
    */
 
   /*
-    onAddJson(name: string): void {
-     name = name.trim();
-     if (!name) { return; }
-     this.schemaService.create(name)
-     .then(schema => {
-       this.schemata.push(schema);
-       this.selectedSchema = null;
-     });
-     }
+   onAddJsonClick() {
+   this.selectedSchema = new Schema('', '');
+   }
+   */
+
+  /*
+   onAddJson(name: string): void {
+   name = name.trim();
+   if (!name) { return; }
+   this.schemaService.create(name)
+   .then(schema => {
+   this.schemata.push(schema);
+   this.selectedSchema = null;
+   });
+   }
    */
 
 }

@@ -1,5 +1,5 @@
 export class Schema {
-  id: number;
+  _id: number;
   name: string;
   schema: string;
   isActive: boolean;

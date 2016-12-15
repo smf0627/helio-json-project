@@ -10,8 +10,8 @@ import { Schema } from './schema';
 export class SchemaService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  // private  schemataUrl = 'http://localhost:4000'
-  private schemataUrl = 'http://hjbedwj2geremgay2.stoplight-proxy.io/organizations/blah/schemas' //'api/schemata';  // URL to web api
+  private  schemataUrl = 'http://localhost:4000/v1/schemata';
+  //private schemataUrl = 'http://hjbedwj2geremgay2.stoplight-proxy.io/organizations/blah/schemas' //'api/schemata';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -30,25 +30,32 @@ export class SchemaService {
       .catch(this.handleError);
   }
 
-  createSchema(name: string): Promise<any> {
+  createSchema(schema): Promise<any> {
+    console.log(schema);
     return this.http
-      .post(this.schemataUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.schemataUrl, schema)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
   }
 
   updateSchema(schema: Schema): Promise<any> {
-    const url = `${this.schemataUrl}/${schema.name}`;
+    const url = `${this.schemataUrl}/${schema._id}`;
+    const copy = JSON.parse(JSON.stringify(schema));
+    if(copy._id) {
+      delete copy._id;
+    }
+
     return this.http
-      .put(url, JSON.stringify(schema), {headers: this.headers})
+      .put(url, JSON.stringify(copy), {headers: this.headers})
       .toPromise()
       .then(() => schema)
       .catch(this.handleError);
   }
 
-  deleteSchema(name: string): Promise<void> {
-    const url = `${this.schemataUrl}/${name}`;
+  deleteSchema(_id): Promise<void> {
+    const url = `${this.schemataUrl}/${_id}`;
+    console.log(url);
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)

@@ -1,20 +1,17 @@
-<p>
-  schema-detail works!
-</p>
 
 
 <div *ngIf="schema">
   <h2>{{schema.name}} details!</h2>
+  <!--<div>-->
+    <!--<label>Name: </label>{{schema.name}}-->
+  <!--</div>-->
   <div>
-    <label>Name: </label>{{schema.name}}
-  </div>
-  <div>
-    <label>name: </label>
+    <label>Name: </label>
     <input [(ngModel)]="schema.name" placeholder="name"/>
   </div>
   <div>
-    <label>schema: </label>
-    <input [(ngModel)]="schema.schema" placeholder="schema"/>
+    <label>Schema: </label><br />
+    <textarea [(ngModel)]="schema.rawSchema" cols="50" rows="6" placeholder="schema"></textarea>
   </div>
   <div>
     <label>URI: </label>
@@ -22,7 +19,8 @@
   </div>
   <div>
     <label>Is Active?: </label>
-    <input [(ngModel)]="schema.isActive" placeholder="isActive"/>
+    <!-- <input [(ngModel)]="schema.isActive" placeholder="isActive"/> -->
+    <input type="checkbox" [(ngModel)]="schema.isActive" placeholder="isActive" />
   </div>
   <button (click)="onSaveSchema()">Save It!</button>
   <button (click)="goBack()">Back</button>

@@ -12,6 +12,7 @@ import { SchemaService } from "./schema.service";
 import { AppRoutingModule } from './app-routing.module';
 import { SchemaSearchComponent } from './schema-search/schema-search.component';
 import './rxjs-extensions';
+import {CommonModule} from "@angular/common";
 
 
 // import { RouterModule } from '@angular/router';
@@ -30,6 +31,7 @@ import './rxjs-extensions';
     SchemaSearchComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,
